@@ -1,3 +1,4 @@
+import 'package:finfree/controllers/api_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 
@@ -7,9 +8,17 @@ class Chart extends StatefulWidget {
 }
 
 class _ChartState extends State<Chart> {
+  ApiHandler _apiHandler = ApiHandler();
+  @override
+  void initState() {
+    _apiHandler.getData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.white,
       width: double.maxFinite,
       child: LineChart(
         LineChartData(
