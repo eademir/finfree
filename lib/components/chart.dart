@@ -1,3 +1,4 @@
+import 'package:finfree/constant/constant.dart';
 import 'package:finfree/controllers/Store.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -16,43 +17,54 @@ class Chart extends StatelessWidget {
             child: Text('Loading...'),
           );
         } else {
-          return Column(
-            children: [
-              Container(
-                color: Colors.white,
-                width: double.maxFinite,
-                child: LineChart(
-                  LineChartData(
-                      extraLinesData: ExtraLinesData(
-                        extraLinesOnTop: true,
-                      ),
-                      gridData: FlGridData(
-                        drawHorizontalLine: false,
-                      ),
-                      titlesData: FlTitlesData(
-                        show: false,
-                      ),
-                      borderData: FlBorderData(
-                          show: true,
-                          border: Border(
-                            top: BorderSide(width: 0),
-                            left: BorderSide(width: 0),
-                            right: BorderSide(width: 0),
-                            bottom: BorderSide(width: 1),
-                          )),
-                      lineBarsData: [
-                        LineChartBarData(
-                          colors: [Colors.greenAccent],
-                          dotData: FlDotData(
-                            show: false,
-                          ),
-                          spots: store.values,
+          return Container(
+            padding: EdgeInsets.all(8.0),
+            decoration: kBoxDecoration,
+            child: Column(
+              children: [
+                Container(
+                  width: double.maxFinite,
+                  child: LineChart(
+                    LineChartData(
+                        extraLinesData: ExtraLinesData(
+                          extraLinesOnTop: true,
                         ),
-                      ]),
+                        gridData: FlGridData(
+                          drawHorizontalLine: false,
+                        ),
+                        titlesData: FlTitlesData(
+                          show: false,
+                        ),
+                        borderData: FlBorderData(
+                            show: true,
+                            border: Border(
+                              top: BorderSide(width: 0),
+                              left: BorderSide(width: 0),
+                              right: BorderSide(width: 0),
+                              bottom: BorderSide(width: 1),
+                            )),
+                        lineBarsData: [
+                          LineChartBarData(
+                            colors: [Colors.greenAccent],
+                            dotData: FlDotData(
+                              checkToShowDot: (spot, barData) {
+                                return spot.x == store.values.last.x &&
+                                    spot.y == store.values.last.y;
+                              },
+                              getDotPainter: (spot, percent, barData, index) {
+                                return FlDotCirclePainter(
+                                  radius: 2,
+                                );
+                              },
+                            ),
+                            spots: store.values,
+                          ),
+                        ]),
+                  ),
                 ),
-              ),
-              ArrangeButtons(),
-            ],
+                ArrangeButtons(),
+              ],
+            ),
           );
         }
       },

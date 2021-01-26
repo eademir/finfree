@@ -1,4 +1,5 @@
 import 'package:finfree/components/chart.dart';
+import 'package:finfree/components/top.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -15,6 +16,10 @@ class HomePage extends StatelessWidget {
             padding: EdgeInsets.all(8.0),
             child: Column(
               children: [
+                Top(),
+                SizedBox(
+                  height: 8,
+                ),
                 Chart(),
               ],
             ),
