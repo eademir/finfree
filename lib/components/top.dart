@@ -1,13 +1,17 @@
 import 'package:finfree/constant/constant.dart';
 import 'package:flutter/material.dart';
 
+//just UI, nothing more.
+
 class Top extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(5.0),
       width: double.maxFinite,
-      decoration: kBoxDecoration,
+      decoration: kBoxDecoration.copyWith(
+        borderRadius: BorderRadius.circular(5.0),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(

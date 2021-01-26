@@ -11,6 +11,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //i need this class for listen to stored data.
     return ChangeNotifierProvider.value(
       value: Store(),
       child: MaterialApp(

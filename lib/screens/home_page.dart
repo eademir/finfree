@@ -2,6 +2,7 @@ import 'package:finfree/components/chart.dart';
 import 'package:finfree/components/top.dart';
 import 'package:flutter/material.dart';
 
+//Main page.
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

@@ -19,11 +19,14 @@ class Chart extends StatelessWidget {
         } else {
           return Container(
             padding: EdgeInsets.all(8.0),
-            decoration: kBoxDecoration,
+            decoration: kBoxDecoration.copyWith(
+              borderRadius: BorderRadius.circular(5.0),
+            ),
             child: Column(
               children: [
                 Container(
                   width: double.maxFinite,
+                  //LineChart is running
                   child: LineChart(
                     LineChartData(
                         extraLinesData: ExtraLinesData(
