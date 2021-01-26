@@ -13,7 +13,11 @@ class HomePage extends StatelessWidget {
         children: [
           Padding(
             padding: EdgeInsets.all(8.0),
-            child: Chart(),
+            child: Column(
+              children: [
+                Chart(),
+              ],
+            ),
           ),
         ],
       ),
