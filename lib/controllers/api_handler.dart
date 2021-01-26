@@ -1,12 +1,30 @@
+import 'dart:convert';
 import 'dart:io';
-import 'package:http/http.dart' as http;
+import 'package:finfree/controllers/spots.dart';
+import 'package:http/http.dart';
 
-class ApiHandler{
+class ApiHandler {
   String url = 'https://finfree.app/demo';
   String header = 'R29vZCBMdWNr';
 
-  void getData() async {
-    var response = await http.get(url, headers: {HttpHeaders.authorizationHeader: header},);
-    print(response.body);
+  Future<List<Spots>> getData({String arrange}) async {
+    Response response = await get(
+      url,
+      headers: {HttpHeaders.authorizationHeader: header},
+    );
+    var responseJson = json.decode(response.body);
+    if (response.statusCode == 200) {
+      return (responseJson[arrange] as List)
+          .map((e) => Spots.fromJSON(e))
+          .toList();
+    } else if (response.statusCode == 401) {
+      return null;
+      //TODO: add somethings fancy
+    } else if (response.statusCode == 500) {
+      return null;
+      //TODO: add something fancy
+    } else {
+      return null;
+    }
   }
 }

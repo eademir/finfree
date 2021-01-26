@@ -1,12 +1,7 @@
 import 'package:finfree/components/chart.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,8 +11,10 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 8,),
-          Chart(),
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Chart(),
+          ),
         ],
       ),
     );
