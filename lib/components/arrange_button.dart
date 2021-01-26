@@ -17,9 +17,13 @@ class ArrangeButton extends StatelessWidget {
           padding: EdgeInsets.all(2.5),
           child: ButtonTheme(
             padding: EdgeInsets.all(0),
+            height: 30,
             // it's comparing text with stored text
             buttonColor: text == store.arrange ? Colors.green : Colors.white,
             child: RaisedButton(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
               child: Text(
                 '$text',
                 style: TextStyle(
