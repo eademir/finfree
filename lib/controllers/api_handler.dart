@@ -6,16 +6,25 @@ import 'package:http/http.dart';
 class ApiHandler {
   String url = 'https://finfree.app/demo';
   String header = 'R29vZCBMdWNr';
+  Response response;
+  var responseJson;
+  int count = 0;
 
   //i created Future for asynchronous methods.
-  Future<List<Spots>> getData({String arrange}) async {
+  Future getData() async {
     //it's getting data as response.
-    Response response = await get(
+    response = await get(
       url,
       headers: {HttpHeaders.authorizationHeader: header},
     );
     //it's decoding json
-    var responseJson = json.decode(response.body);
+    responseJson = json.decode(response.body);
+  }
+
+  Future<List<Spots>> getSpots({String arrange}) async {
+    if (response == null) {
+      await getData();
+    }
     //response staffs
     if (response.statusCode == 200) {
       return (responseJson[arrange] as List)

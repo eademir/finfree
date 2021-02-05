@@ -5,8 +5,8 @@ import 'api_handler.dart';
 
 //this is my store. everything's happening here without stateful widgets
 class Store extends ChangeNotifier {
-  String _arrange = '1G';
   ApiHandler _apiHandler = ApiHandler();
+  String _arrange = '1G';
   List<Spots> _spots;
   List<FlSpot> _values;
 
@@ -18,7 +18,7 @@ class Store extends ChangeNotifier {
 
   //this method getting data and setting up as i can use.
   void getSpots() async {
-    _spots = await _apiHandler.getData(arrange: _arrange);
+    _spots = await _apiHandler.getSpots(arrange: _arrange);
     _values = _spots.map((e) => FlSpot(e.d, e.c)).toList();
     notifyListeners();
   }

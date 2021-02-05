@@ -3,7 +3,6 @@ import 'package:finfree/controllers/Store.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:provider/provider.dart';
-
 import 'arrange_buttons.dart';
 
 class Chart extends StatelessWidget {
@@ -39,13 +38,14 @@ class Chart extends StatelessWidget {
                           show: false,
                         ),
                         borderData: FlBorderData(
-                            show: true,
-                            border: Border(
-                              top: BorderSide(width: 0),
-                              left: BorderSide(width: 0),
-                              right: BorderSide(width: 0),
-                              bottom: BorderSide(width: 1),
-                            )),
+                          show: true,
+                          border: Border(
+                            top: BorderSide(width: 0),
+                            left: BorderSide(width: 0),
+                            right: BorderSide(width: 0),
+                            bottom: BorderSide(width: 1),
+                          ),
+                        ),
                         lineBarsData: [
                           LineChartBarData(
                             colors: [Colors.greenAccent],
